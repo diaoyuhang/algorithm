@@ -17,8 +17,8 @@ public class Code08_PaperFolding {
         if (i > n) {
             return;
         }
-        printFold(i + 1, n, false);
-        System.out.println(flag ? "down" : "up");
         printFold(i + 1, n, true);
+        System.out.println(flag ? "down" : "up");
+        printFold(i + 1, n, false);
     }
 }
