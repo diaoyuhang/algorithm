@@ -59,6 +59,7 @@ public class Code15_lowestAncestor {
             parentNodeMap.put(head.right, head);
             fillParentMap(head.right, parentNodeMap);
         }
+    }
     public static class Info {
         public Node ans;
         public boolean findO1;
