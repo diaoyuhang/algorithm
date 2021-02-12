@@ -1,5 +1,6 @@
 package binarytree;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -9,9 +10,58 @@ import java.util.HashSet;
  * @Date: 21:00 2021/2/9
  */
 public class Code15_lowestAncestor {
-    public static void main(String[] args) {
-
+    // for test
+    public static Node generateRandomBST(int maxLevel, int maxValue) {
+        return generate(1, maxLevel, maxValue);
     }
+
+    // for test
+    public static Node generate(int level, int maxLevel, int maxValue) {
+        if (level > maxLevel || Math.random() < 0.5) {
+            return null;
+        }
+        Node head = new Node((int) (Math.random() * maxValue));
+        head.left = generate(level + 1, maxLevel, maxValue);
+        head.right = generate(level + 1, maxLevel, maxValue);
+        return head;
+    }
+
+    // for test
+    public static Node pickRandomOne(Node head) {
+        if (head == null) {
+            return null;
+        }
+        ArrayList<Node> arr = new ArrayList<>();
+        fillPrelist(head, arr);
+        int randomIndex = (int) (Math.random() * arr.size());
+        return arr.get(randomIndex);
+    }
+
+    // for test
+    public static void fillPrelist(Node head, ArrayList<Node> arr) {
+        if (head == null) {
+            return;
+        }
+        arr.add(head);
+        fillPrelist(head.left, arr);
+        fillPrelist(head.right, arr);
+    }
+
+    public static void main(String[] args) {
+        int maxLevel = 4;
+        int maxValue = 100;
+        int testTimes = 1000000;
+        for (int i = 0; i < testTimes; i++) {
+            Node head = generateRandomBST(maxLevel, maxValue);
+            Node o1 = pickRandomOne(head);
+            Node o2 = pickRandomOne(head);
+            if (lowestAncestor1(head, o1, o2) != lowestAncestor2(head, o1, o2)) {
+                System.out.println("Oops!");
+            }
+        }
+        System.out.println("finish!");
+    }
+
 
     public static class Node {
         public int value;
@@ -35,6 +85,7 @@ public class Code15_lowestAncestor {
         //用来存储n1的父结点有哪些
         HashSet<Node> parentSet = new HashSet<>();
         Node cur = n1;
+        parentSet.add(cur);
         while (parentNodeMap.get(cur) != null) {
             cur = parentNodeMap.get(cur);
             parentSet.add(cur);
@@ -60,6 +111,7 @@ public class Code15_lowestAncestor {
             fillParentMap(head.right, parentNodeMap);
         }
     }
+
     public static class Info {
         public Node ans;
         public boolean findO1;
@@ -73,6 +125,9 @@ public class Code15_lowestAncestor {
     }
 
     public static Node lowestAncestor2(Node header, Node o1, Node o2) {
+        if (header == null) {
+            return null;
+        }
         return process(header, o1, o2).ans;
     }
 
