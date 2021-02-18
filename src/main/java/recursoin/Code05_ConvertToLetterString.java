@@ -25,7 +25,7 @@ public class Code05_ConvertToLetterString {
 
         if (chars[i] == '2') {
             int sum = process(chars, i + 1);
-            if (i + 1 < chars.length && Integer.valueOf(chars[i + 1] + "") <= 6) {
+            if (i + 1 < chars.length && Integer.parseInt(chars[i + 1] + "") <= 6) {
                 sum += process(chars, i + 2);
             }
             return sum;
@@ -56,7 +56,7 @@ public class Code05_ConvertToLetterString {
 
             if (chars[i] == '2') {
                 dp[i] = dp[i + 1];
-                if (i + 1 < chars.length && Integer.valueOf(chars[i + 1] + "") <= 6) {
+                if (i + 1 < chars.length && Integer.parseInt(chars[i + 1] + "") <= 6) {
                     dp[i] += dp[i + 2];
                 }
             }
@@ -69,7 +69,6 @@ public class Code05_ConvertToLetterString {
         }
         return dp[0];
     }
-
 
     public static void main(String[] args) {
         System.out.println(number("121"));
