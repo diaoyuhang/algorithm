@@ -9,8 +9,11 @@ import java.util.PriorityQueue;
  */
 public class Code06_Coffee {
     public static void main(String[] args) {
-        int[] arr = {1, 1, 1, 1, 1, 1};
-        System.out.println(process1(arr, 1, 1, 0, 0));
+        int[] test = {1, 1, 5, 5, 7, 10, 12, 12, 12, 12, 12, 12, 15};
+        int a1 = 3;
+        int b1 = 10;
+        System.out.println(process1(test, a1, b1, 0, 0));
+        System.out.println(dpWay(test, a1, b1));
     }
 
     public static class Machine {
@@ -52,11 +55,13 @@ public class Code06_Coffee {
             //从洗杯子的结束时间和挥发杯子的结束时间中选取最小的
             return Math.min(Math.max(washTime, endPoint[index]) + a, endPoint[index] + b);
         }
-        //得到一个杯子洗完的时间点
+        //得到index杯子洗完的时间点
         int wash = Math.max(washTime, endPoint[index]) + a;
+        //index之后的杯子变干净的最早时间
         int next1 = process1(endPoint, a, b, index + 1, wash);
-
+        //求出杯子全部变干净的最后时间点
         int ans1 = Math.max(wash, next1);
+
         //得到一个杯子挥发结束的时间点
         int huiFa = endPoint[index] + b;
         int next2 = process1(endPoint, a, b, index + 1, washTime);
@@ -83,19 +88,32 @@ public class Code06_Coffee {
 
         for (int i = N - 2; i >= 0; i--) {
             for (int washLine = 0; washLine <= limit; washLine++) {
-                dp[i][washLine] =Math.max(Math.max(washLine,endPoint[i])+a,dp[i+1][]);
+
+                int ans1 = Integer.MAX_VALUE;
+                //选择清洗
+                int wash = Math.max(washLine, endPoint[i]) + a;
+                if (wash <= limit) {
+                    int next1 = dp[i + 1][wash];
+                    ans1 = Math.max(wash, next1);
+                }
+                //选择挥发
+                int huiFa = endPoint[i] + b;
+                int next2 = dp[i + 1][washLine];
+                int ans2 = Math.max(huiFa, next2);
+
+                dp[i][washLine] = Math.min(ans1, ans2);
             }
         }
 
         //得到一个杯子洗完的时间点
-        int wash = Math.max(washTime, endPoint[index]) + a;
-        int next1 = process1(endPoint, a, b, index + 1, wash);
-
-        int ans1 = Math.max(wash, next1);
-        //得到一个杯子挥发结束的时间点
-        int huiFa = endPoint[index] + b;
-        int next2 = process1(endPoint, a, b, index + 1, washTime);
-        int ans2 = Math.max(huiFa, next2);
+//        int wash = Math.max(washTime, endPoint[index]) + a;
+//        int next1 = process1(endPoint, a, b, index + 1, wash);
+//
+//        int ans1 = Math.max(wash, next1);
+//        //得到一个杯子挥发结束的时间点
+//        int huiFa = endPoint[index] + b;
+//        int next2 = process1(endPoint, a, b, index + 1, washTime);
+//        int ans2 = Math.max(huiFa, next2);
 
         return dp[0][0];
     }
