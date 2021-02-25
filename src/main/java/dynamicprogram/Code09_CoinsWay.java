@@ -8,51 +8,50 @@ public class Code09_CoinsWay {
     public static void main(String[] args) {
         int[] arr = {5, 2, 3, 1};
         int sum = 350;
-        System.out.println(ways(arr, sum));
-//        System.out.println(waysdp(arr, sum));
+        System.out.println(way1(arr, sum));
+        System.out.println(dpWay(arr, sum));
     }
 
     public static int way1(int[] arr, int aim) {
         if (arr == null || arr.length == 0 || aim < 0) {
             return 0;
         }
-        return process(arr, aim, 0,0);
+        return process(arr, aim, 0);
     }
 
-    private static int process(int[] arr, int aim,int index, int sum) {
-        if (sum == aim) {
-            return 1;
-        }
-        if (sum > aim) {
-            return 0;
-        }
-        int ans = 0;
-        for (int i = index; i < arr.length; i++) {
-            int result = process(arr, aim, sum + arr[i]);
-            ans += result;
-        }
+    private static int process(int[] arr, int rest, int index) {
 
-        return ans;
-    }
-
-    public static int ways(int[] arr, int aim) {
-        if (arr == null || arr.length == 0 || aim < 0) {
-            return 0;
-        }
-        return process1(arr, 0, aim);
-    }
-
-    // 如果自由使用arr[index...]的面值，组成rest这么多钱，返回方法数 （1 , 6）
-    public static int process1(int[] arr, int index, int rest) {
-        if (index == arr.length) { // 无面值的时候
+        if (index == arr.length) {
             return rest == 0 ? 1 : 0;
         }
-        // 有面值的时候
-        int ways = 0;
-        // arr[index] 当钱面值
-        for (int zhang = 0; zhang * arr[index] <= rest; zhang++) {
-            ways += process(arr, index + 1, rest - zhang * arr[index]);
+
+        if (rest == 0) {
+            return 1;
         }
+
+        int ways = 0;
+        for (int zhangShu = 0; zhangShu * arr[index] <= rest; zhangShu++) {
+            ways += process(arr, rest - zhangShu * arr[index], index + 1);
+        }
+
         return ways;
+    }
+
+    public static int dpWay(int[] arr, int aim) {
+
+        int[][] dp = new int[arr.length + 1][aim + 1];
+
+        dp[arr.length][0] = 1;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j <= aim; j++) {
+                int ways = 0;
+                for (int zhangShu = 0; zhangShu * arr[i] <= j; zhangShu++) {
+                    ways += dp[i + 1][j - zhangShu * arr[i]];
+                }
+                dp[i][j] = ways;
+            }
+        }
+        return dp[0][aim];
     }
 }
