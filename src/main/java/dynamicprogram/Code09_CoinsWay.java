@@ -41,10 +41,12 @@ public class Code09_CoinsWay {
 
         int[][] dp = new int[arr.length + 1][aim + 1];
 
-        dp[arr.length][0] = 1;
-
+//        dp[arr.length][0] = 1;
+        for (int i=0;i<=arr.length;i++){
+            dp[i][0]=1;
+        }
         for (int i = arr.length - 1; i >= 0; i--) {
-            for (int j = 0; j <= aim; j++) {
+            for (int j = 1; j <= aim; j++) {
                 int ways = 0;
                 for (int zhangShu = 0; zhangShu * arr[i] <= j; zhangShu++) {
                     ways += dp[i + 1][j - zhangShu * arr[i]];
