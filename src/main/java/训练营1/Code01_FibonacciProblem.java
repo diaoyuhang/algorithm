@@ -8,7 +8,7 @@ package 训练营1;
 public class Code01_FibonacciProblem {
 
     public static void main(String[] args) {
-        System.out.println(function(20));
+        System.out.println(function(5));
     }
 
     public static int function(int n) {
@@ -22,7 +22,9 @@ public class Code01_FibonacciProblem {
         int[][] basic = {{1, 1}, {1, 0}};
         int[][] res = matrixPower(basic, n - 2);
 
-        return res[0][0] + res[1][0];
+        int[][] arr={{1,1}};
+        int[][] ans = muliMatrix(arr, res);
+        return ans[0][0]+ans[0][1];
     }
 
     //矩阵次方
