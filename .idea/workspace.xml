@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75681f85-d3f4-4d6e-96a9-783a304c3604" name="Default Changelist" comment="" />
+    <list default="true" id="75681f85-d3f4-4d6e-96a9-783a304c3604" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/训练营1/Code02_StepUpStairs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/训练营1/Code01_FibonacciProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/训练营1/Code01_FibonacciProblem.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +62,7 @@
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Code02_StepUpStairs">
     <configuration name="Code01_FibonacciProblem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="训练营1.Code01_FibonacciProblem" />
       <module name="algorithm" />
@@ -73,8 +76,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Code02_StepUpStairs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="训练营1.Code02_StepUpStairs" />
+      <module name="algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="训练营1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Code02_StepUpStairs" />
         <item itemvalue="Application.Code01_FibonacciProblem" />
       </list>
     </recent_temporary>
@@ -89,7 +106,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1614414652014</updated>
-      <workItem from="1614414658452" duration="4949000" />
+      <workItem from="1614414658452" duration="10571000" />
     </task>
     <task id="LOCAL-00001" summary="斐波那契数列">
       <created>1614422436098</created>
@@ -118,5 +135,58 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="斐波那契数列" />
     <option name="LAST_COMMIT_MESSAGE" value="斐波那契数列" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="413" height="466" key="DebuggerActiveHint" timestamp="1614433150721">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="413" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1614433150721" />
+    <state width="1493" height="178" key="GridCell.Tab.0.bottom" timestamp="1614433678324">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614433678324" />
+    <state width="1493" height="178" key="GridCell.Tab.0.center" timestamp="1614433678324">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1614433678324" />
+    <state width="1493" height="178" key="GridCell.Tab.0.left" timestamp="1614433678324">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1614433678324" />
+    <state width="1493" height="178" key="GridCell.Tab.0.right" timestamp="1614433678324">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1614433678324" />
+    <state width="1493" height="282" key="GridCell.Tab.1.bottom" timestamp="1614433279271">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="282" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614433279271" />
+    <state width="1493" height="282" key="GridCell.Tab.1.center" timestamp="1614433279271">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="282" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1614433279271" />
+    <state width="1493" height="282" key="GridCell.Tab.1.left" timestamp="1614433279271">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="282" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1614433279271" />
+    <state width="1493" height="282" key="GridCell.Tab.1.right" timestamp="1614433279271">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="282" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1614433279271" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1614422438867">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614422438867" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/训练营1/Code02_StepUpStairs.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
