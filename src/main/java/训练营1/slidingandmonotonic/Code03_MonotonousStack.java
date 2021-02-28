@@ -1,4 +1,4 @@
-package slidingandmonotonic;
+package 训练营1.slidingandmonotonic;
 
 import java.util.ArrayList;
 import java.util.List;

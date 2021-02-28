@@ -1,4 +1,4 @@
-package 训练营1;
+package 训练营1.斐波拉切问题;
 
 /**
  * @Author: Mr.diao

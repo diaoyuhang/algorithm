@@ -1,6 +1,5 @@
-package slidingandmonotonic;
+package 训练营1.slidingandmonotonic;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
