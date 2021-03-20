@@ -1,13 +1,12 @@
 package 训练营1.manacher;
 
 /**
- * 假设字符串str长度为N，想返回最长回文子串的长度
- *
  * @Author: Mr.diao
  * @Description:
- * @Date: 16:33 2021/3/6
+ * @Date: 19:14 2021/3/20
  */
 public class Code01_Manacher {
+
     // for test
     public static int right(String s) {
         if (s == null || s.length() == 0) {
@@ -56,43 +55,40 @@ public class Code01_Manacher {
         }
 
         char[] chars = manacherString(str);
-        int R = -1;
-        int C = -1;
-        //存储每个位置的回文半径
-        int[] parr = new int[chars.length];
+        int center = -1;
+        int right = -1;
+
+        int[] record = new int[chars.length];
         int max = Integer.MIN_VALUE;
-
         for (int i = 0; i < chars.length; i++) {
-            //2 * C - i 求得i关于C的对称点
-            parr[i] = R > i ? Math.min(parr[2 * C - i], R - i) : 1;
 
-            while (i + parr[i] < chars.length && i - parr[i] >= 0) {
-                if (chars[i + parr[i]] == chars[i - parr[i]]) {
-                    parr[i]++;
+            record[i] = right > i ? Math.min(record[2 * center - i], right - i) : 1;
+
+            while (i + record[i] < chars.length && i - record[i] >= 0) {
+                if (chars[i + record[i]] == chars[i - record[i]]) {
+                    record[i]++;
                 } else {
                     break;
                 }
             }
 
-            if (i + parr[i] > R) {
-                R = parr[i] + i;
-                C = i;
+            if (record[i] + i > right) {
+                right = record[i] + i;
+                center = i;
             }
-            max = Math.max(max, parr[i]);
+            max = Math.max(max, record[i]);
         }
+
         return max - 1;
     }
 
-    private static char[] manacherString(String str) {
+    public static char[] manacherString(String str) {
         char[] chars = str.toCharArray();
-        char[] res = new char[chars.length * 2 + 1];
+        char[] result = new char[chars.length * 2 + 1];
         int index = 0;
-
-        for (int i = 0; i < res.length; i++) {
-            res[i] = i % 2 == 0 ? '#' : chars[index++];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = (i & 1) == 0 ? '#' : chars[index++];
         }
-
-        return res;
+        return result;
     }
-
 }
