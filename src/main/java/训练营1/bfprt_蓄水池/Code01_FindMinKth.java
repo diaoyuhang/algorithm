@@ -67,12 +67,12 @@ public class Code01_FindMinKth {
         int pivot = medianOfMedians(arr, l, r);
 
         int[] rang = partition(arr, l, r, pivot);
-        if (k >= rang[0] && k <= rang[0]) {
+        if (k >= rang[0] && k <= rang[1]) {
             return arr[k];
         } else if (k < rang[0]) {
-            return process1(arr, l, rang[0] - 1, k);
+            return bfprt(arr, l, rang[0] - 1, k);
         } else {
-            return process1(arr, rang[1] + 1, r, k);
+            return bfprt(arr, rang[1] + 1, r, k);
         }
     }
 
