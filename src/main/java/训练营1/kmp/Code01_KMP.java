@@ -12,7 +12,15 @@ public class Code01_KMP {
     public static void main(String[] args) {
 
     }
-
+    /**
+     *  kmp加速原理：
+     *  S: [abcde...abcd]x...
+     *  M: [abcde...abcd]y...
+     *  假设当S来到x字符，M来到y字符，这两个不匹配，
+     *  S不动，M就会根据next数组的下一跳来到e字符开始和x字符进行匹配；
+     *  1、这个就直接省去abcd的比较
+     *  2、确定S的之前的字符不可能匹配出完整的字符串
+     */
     public static int getIndexOf(String s, String m) {
         if (s == null || m == null || m.length() < 1 || s.length() < m.length()) {
             return -1;
@@ -36,7 +44,12 @@ public class Code01_KMP {
 
         return mIndex == m.length() ? sIndex - mIndex : -1;
     }
-
+    /**
+     * 获取下一跳数字的本质就是，遍历每个字符，计算该字符之前的字符串，前缀等于后缀最大值（不包含整个字符串），
+     * 第一个字符默认-1，第二个字符默认0
+     */
+    //a     b   b   a   b   b   c
+    //-1    0   0   0   1   2   3
     //获得match字符串的下一跳数组
     public static int[] getNextArray(String m) {
         if (m.length() == 1) {
