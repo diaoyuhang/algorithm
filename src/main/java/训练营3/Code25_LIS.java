@@ -53,6 +53,40 @@ public class Code25_LIS {
         return dp;
     }
 
+    public static int[] list2(int[] arr) {
+        int[] dp = getDp2(arr);
+        return generateLIS(arr, dp);
+    }
+
+    private static int[] getDp2(int[] arr) {
+        int[] dp = new int[arr.length];
+        int[] end = new int[arr.length];
+
+        end[0] = arr[0];
+        dp[0] = 1;
+
+        int l = 0;
+        int r = 0;
+        int mid = 0;
+        int right = 0;
+        for (int i = 1; i < arr.length; i++) {
+            l = 0;
+            r = right;
+            while (l <= r) {
+                mid = (l + r) / 2;
+                if (arr[i] > end[mid]) {
+                    l = mid + 1;
+                } else {
+                    r = mid - 1;
+                }
+            }
+            right = Math.max(right, l);
+            end[l] = arr[i];
+            dp[i] = l + 1;
+        }
+        return dp;
+    }
+
     // for test
     public static void printArray(int[] arr) {
         for (int i = 0; i != arr.length; i++) {
@@ -62,10 +96,10 @@ public class Code25_LIS {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 2, 1, 5, 3, 6, 4, 8, 9, 7 };
+        int[] arr = {2, 1, 5, 3, 6, 4, 8, 9, 7};
         printArray(arr);
         printArray(list1(arr));
-//        printArray(lis2(arr));
+        printArray(list2(arr));
 
     }
 }
