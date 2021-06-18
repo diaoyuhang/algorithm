@@ -1,5 +1,8 @@
 package 训练营3;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * LRU内存替换算法的实现
  *
@@ -69,6 +72,48 @@ public class Code32_LeastRecentlyUsedCache {
                 this.head = nextNode;
             }
             return res;
+        }
+    }
+
+    public static class Cache<K, V> {
+        NodeDoubleLinkedList<K, V> lru = null;
+        Map<K, Node<K, V>> map = null;
+        int size = 10;
+        int cur = 0;
+
+        public Cache(int size) {
+            lru = new NodeDoubleLinkedList<>();
+            map = new HashMap<>();
+            this.size = size;
+        }
+
+        public V get(K key) {
+            if (map.containsKey(key)) {
+                Node<K, V> node = map.get(key);
+                lru.moveNodeToTail(node);
+                return node.value;
+            }
+            return null;
+        }
+
+        public void set(K key, V value) {
+            if (map.containsKey(key)) {
+                Node<K, V> node = map.get(key);
+                node.value = value;
+                lru.moveNodeToTail(node);
+            } else {
+                if (cur == size) {
+                    lru.removeHeader();
+                    cur--;
+                }
+                Node<K, V> node = new Node<>();
+                node.key = key;
+                node.value = value;
+                map.put(key, node);
+                lru.add(node);
+                cur++;
+            }
+
         }
     }
 }
