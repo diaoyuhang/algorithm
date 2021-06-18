@@ -55,28 +55,35 @@ public class Code01_Manacher {
         }
 
         char[] chars = manacherString(str);
-        int center = -1;
-        int right = -1;
 
-        int[] record = new int[chars.length];
+        int right = -1; //当有回文子串的右边界，如果超过了right，就更新right值为右边界的值
+        int center = -1; //当right值更新，center就更新为回文子串的中心点
+
+        int[] pArr = new int[chars.length];
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < chars.length; i++) {
+            //1、如果下标i超过了right边界位置的，就直接赋值1，没任何优化
+            //2、如果下标i在right的边界内:
+            //      找到i在center回文串中的相对应的另一个点i'的位置，i'的为中心的回文串的p'半径长度已经记录在pArr数组中
+            //      分3中情况计算i的回文半径长度：
+            //      1、如果i'回文长度没有超过center回文的左边界，那么该长度就是i的回文长度；
+            //      2、如果i'回文长度超过center回文的左边界,那么i的回文长度就是right-i的长度；
+            //      3、如果i'回文长度正好在center回文的左边界，那么i的回文长度需要在i'回文长度的基础上继续计算
+            pArr[i] = right > i ? Math.min(pArr[2 * center - i], right - i) : 1;
 
-            record[i] = right > i ? Math.min(record[2 * center - i], right - i) : 1;
-
-            while (i + record[i] < chars.length && i - record[i] >= 0) {
-                if (chars[i + record[i]] == chars[i - record[i]]) {
-                    record[i]++;
+            while (i + pArr[i] < chars.length && i - pArr[i] >= 0) {
+                if (chars[i + pArr[i]] == chars[i - pArr[i]]) {
+                    pArr[i]++;
                 } else {
                     break;
                 }
             }
 
-            if (record[i] + i > right) {
-                right = record[i] + i;
+            if (pArr[i] + i > right) {
+                right = pArr[i] + i;
                 center = i;
             }
-            max = Math.max(max, record[i]);
+            max = Math.max(max, pArr[i]);
         }
 
         return max - 1;
