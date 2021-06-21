@@ -1,6 +1,8 @@
 package 训练营1.manacher;
 
 /**
+ * 在字符串最后加上最少的字符，使整个字符串编程回文
+ *
  * @Author: Mr.diao
  * @Description:
  * @Date: 20:23 2021/3/20
@@ -10,6 +12,7 @@ public class Code02_AddShortestEnd {
         String str1 = "1aab";
         System.out.println(manacher(str1));
     }
+
     public static String manacher(String str) {
         if (str == null || str.length() == 0) {
             return str;
