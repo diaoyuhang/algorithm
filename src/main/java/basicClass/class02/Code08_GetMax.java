@@ -1,4 +1,4 @@
-package 基础班.class02;
+package basicClass.class02;
 
 /**
  * @author: diaoyuhang

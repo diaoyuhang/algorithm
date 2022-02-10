@@ -1,6 +1,4 @@
-package 基础班.class01;
-
-import java.util.Arrays;
+package basicClass.class01;
 
 public class Code01_SelectionSort {
 

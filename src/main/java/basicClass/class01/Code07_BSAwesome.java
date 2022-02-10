@@ -1,4 +1,4 @@
-package 基础班.class01;
+package basicClass.class01;
 
 /**
  * 局部最小值问题
