@@ -43,14 +43,20 @@ public class T4_LookingForMidNumOfTwoArr {
 
             int mid = k / 2;
 
-            int midValue1 = nums1[mid];
-            int midValue2 = nums2[mid];
+            int newIndex1 = Math.min(index1 + mid, length1) - 1;
+            int newIndex2 = Math.min(index2 + mid, length2) - 1;
+
+
+            int midValue1 = nums1[newIndex1];
+            int midValue2 = nums2[newIndex2];
 
             if (midValue1 > midValue2) {
-                
+                index2 = newIndex2 + 1;
+                k -= (newIndex2 - index2 + 1);
+            } else {
+                index1 = newIndex1 + 1;
+                k -= (newIndex1 - index1 + 1);
             }
         }
-
-        return 0;
     }
 }
