@@ -8,10 +8,12 @@ package leetCode;
  */
 public class T4_LookingForMidNumOfTwoArr {
     public static void main(String[] args) {
-        System.out.println(1 / 2);
+        int[] arr1={1,2};
+        int[] arr2={5,6,7,8,9,10};
+        System.out.println(find(arr1,arr2));
     }
 
-    public double find(int[] nums1, int[] nums2) {
+    public static double find(int[] nums1, int[] nums2) {
         int length1 = nums1.length;
         int length2 = nums2.length;
 
@@ -22,7 +24,7 @@ public class T4_LookingForMidNumOfTwoArr {
         }
     }
 
-    private double getMidNumOfTwoArr(int[] nums1, int[] nums2, int k) {
+    private static double getMidNumOfTwoArr(int[] nums1, int[] nums2, int k) {
         int length1 = nums1.length;
         int length2 = nums2.length;
         int index1 = 0;
@@ -51,11 +53,11 @@ public class T4_LookingForMidNumOfTwoArr {
             int midValue2 = nums2[newIndex2];
 
             if (midValue1 > midValue2) {
-                index2 = newIndex2 + 1;
                 k -= (newIndex2 - index2 + 1);
+                index2 = newIndex2 + 1;
             } else {
-                index1 = newIndex1 + 1;
                 k -= (newIndex1 - index1 + 1);
+                index1 = newIndex1 + 1;
             }
         }
     }
