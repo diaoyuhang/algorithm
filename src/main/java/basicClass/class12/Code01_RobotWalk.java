@@ -4,6 +4,7 @@ public class Code01_RobotWalk {
 
     public static void main(String[] args) {
         System.out.println(walkWay(7, 4, 9, 5));
+        System.out.println(dpWay(7, 4, 9, 5));
     }
 
     /**
@@ -41,13 +42,25 @@ public class Code01_RobotWalk {
         return res;
     }
 
-    public static int dpWay(int n, int m, int k, int p){
+    public static int dpWay(int n, int m, int k, int p) {
         if (n < 2 || k < 1 || m < 1 || m > n || p < 1 || p > n) {
             return 0;
         }
+        int[][] dp = new int[n + 1][k + 1];
+        dp[p][0] = 1;
 
-        new int[][];
+        for (int i = 1; i <= k; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (j == 1) {
+                    dp[j][i] = dp[j + 1][i - 1];
+                }else if (j == n) {
+                    dp[j][i] = dp[j - 1][i - 1];
+                }else{
+                    dp[j][i] = dp[j + 1][i - 1] + dp[j - 1][i - 1];
+                }
+            }
+        }
 
-        return 0;
+        return dp[m][k];
     }
 }
