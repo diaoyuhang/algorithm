@@ -1,4 +1,4 @@
-package TrainingCamp1;
+package TrainingCamp1.class01;
 
 import java.util.LinkedList;
 

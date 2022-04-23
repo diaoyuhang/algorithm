@@ -8,10 +8,15 @@ package basicClass.class11;
 public class Code09_NQueens {
 
     public static void main(String[] args) {
-        long begin = System.currentTimeMillis();
-        System.out.println(nQueens2(32));
-        System.out.println(System.currentTimeMillis() - begin);
-
+        for(int n=20;n<25;n++) {
+            System.out.println(n + "皇后");
+            long begin = System.currentTimeMillis();
+            nQueens2(n);
+            System.out.println("位运算递归：" + (System.currentTimeMillis() - begin));
+//            begin = System.currentTimeMillis();
+//            nQueens1(n);
+//            System.out.println("集合递归：" + (System.currentTimeMillis() - begin));
+        }
     }
 
     public static int nQueens1(int num) {
