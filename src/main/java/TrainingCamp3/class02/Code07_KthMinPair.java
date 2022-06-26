@@ -53,7 +53,7 @@ public class Code07_KthMinPair {
             return k;
         } else if (k < l) {
             return getMinKth(arr, left, l, k);
-        } else (k > r) {
+        } else {
             return getMinKth(arr, r, right, k);
         }
     }
