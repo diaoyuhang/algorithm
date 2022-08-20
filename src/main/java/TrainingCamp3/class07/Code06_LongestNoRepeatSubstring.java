@@ -14,6 +14,7 @@ public class Code06_LongestNoRepeatSubstring {
         int pre = -1;
         int cur = -1;
         for (int i = 0; i < chars.length; i++) {
+            //pre到i之间时刻保持没有重复字符
             pre = Math.max(pre, map[chars[i]]);
             cur = i - pre;
             len = Math.max(len, cur);
